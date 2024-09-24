@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objs as go
 import streamlit as st
 # Page Configuration
-st.set_page_config(layout='wide', page_title='MyAnimeList Seasonal Stats')
+st.set_page_config(layout='wide', page_title='SeasonalMAL')
 
 
 # Read in data
@@ -37,7 +37,7 @@ season_list = [season for season in season_list if season is not None]
 
 
 # Title
-st.title('MyAnimeList Seasonal Stats')
+st.title('SeasonalMAL')
 st.markdown('A Streamlit app for MAL statistics, by season.')
 
 
