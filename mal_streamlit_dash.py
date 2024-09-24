@@ -216,7 +216,7 @@ def plot_score_distribution_histogram(df):
     return fig
 
 
-def plot_source_distribution_histogram(df):
+def plot_source_distribution_bar(df):
     df_source = df['source'].value_counts(
         sort=True, ascending=True).reset_index()
 
@@ -402,7 +402,7 @@ def main():
         )
 
     # Source Distribution and Type Distribution Columns
-    source_distribution_fig = plot_source_distribution_histogram(df_selected)
+    source_distribution_fig = plot_source_distribution_bar(df_selected)
     type_distribution_fig = plot_type_distribution_pie(df_selected)
 
     col1, col2 = st.columns(2, gap='large', vertical_alignment='bottom')
