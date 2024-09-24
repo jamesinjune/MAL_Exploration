@@ -152,16 +152,15 @@ def plot_score_distribution_histogram(df):
     bin_edges = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     hist_values, _ = np.histogram(df['score'], bins=bin_edges)
 
-    fig = go.Figure()
-
-    fig.add_trace(go.Bar(
-        x=hist_values,
-        y=[f'{bin_edges[i]} ' for i in range(len(bin_edges)-1)],
-        orientation='h',
-        marker_color=graph_color_scheme,
-        hovertemplate='Score: %{y}.0<br>Count: %{x}<br>' +
-                    '<extra></extra>'
-    ))
+    fig = go.Figure(
+        data=go.Bar(
+            x=hist_values,
+            y=[f'{bin_edges[i]} ' for i in range(len(bin_edges)-1)],
+            orientation='h',
+            marker_color=graph_color_scheme,
+            hovertemplate='Score: %{y}.0<br>Count: %{x}<br>' + '<extra></extra>'
+        )
+    )
 
     fig.update_layout(
         title={
@@ -224,18 +223,20 @@ def plot_source_distribution_bar(df):
     counts = df_source['count']
     percents = round(df_source['count'] / len(df) * 100, 2)
 
-    fig = go.Figure(data=go.Bar(
-        x=counts,
-        y=sources,
-        orientation='h',
-        text=counts,
-        texttemplate='%{text}',
-        textposition='auto',
-        marker_color=graph_color_scheme,
-        hovertext=[f"Source: {src}<br>Count: {count}<br>Percent: {percent}%" for src,
-                   count, percent in zip(sources, counts, percents)],
-        hoverinfo='text'
-    ))
+    fig = go.Figure(
+        data=go.Bar(
+            x=counts,
+            y=sources,
+            orientation='h',
+            text=counts,
+            texttemplate='%{text}',
+            textposition='auto',
+            marker_color=graph_color_scheme,
+            hovertext=[f"Source: {src}<br>Count: {count}<br>Percent: {percent}%" for src,
+                       count, percent in zip(sources, counts, percents)],
+            hoverinfo='text'
+        )
+    )
 
     fig.update_traces(
         textfont_size=12,
@@ -280,12 +281,12 @@ def plot_type_distribution_pie(df):
     values = df['type'].value_counts()
 
     fig = go.Figure(
-        data=[go.Pie(
+        data=go.Pie(
             labels=labels,
             values=values,
             textinfo='label',
             hovertemplate='<b>%{label}</b><br>Count: %{value}<br>Percent: %{percent:,.2%}<extra></extra>'
-        )]
+        )
     )
 
     fig.update_layout(
