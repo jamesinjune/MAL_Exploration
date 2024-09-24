@@ -7,7 +7,7 @@ st.set_page_config(layout='wide', page_title='SeasonalMAL')
 
 
 # Read in data
-file_url = 'https://raw.githubusercontent.com/jamesinjune/MAL_Exploration/refs/heads/main/df_mal_cleaned.csv'
+file_url = 'https://raw.githubusercontent.com/jamesinjune/SeasonalMAL/refs/heads/main/df_mal_cleaned.csv'
 
 df = pd.read_csv(file_url)
 
